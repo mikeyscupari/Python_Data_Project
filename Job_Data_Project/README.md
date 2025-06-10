@@ -115,16 +115,23 @@ View my notebook with detailed steps here: [3_Skills_Trend](3_Skills_Trend.ipynb
 ### Visualize Data
 
 ```python
-
 from matplotlib.ticker import PercentFormatter
 
 df_plot = df_DA_US_percent.iloc[:, :5]
 sns.lineplot(data=df_plot, dashes=False, legend='full', palette='tab10')
+sns.set_theme(style='whitegrid')
+sns.despine()
 
+plt.title('Trending Top Skills for Data Analysts in the US')
+plt.ylabel('Likelihood in Job Posting')
+plt.xlabel('2023')
+plt.legend().remove()
 plt.gca().yaxis.set_major_formatter(PercentFormatter(decimals=0))
 
-plt.show()
+for i in range(5):
+    plt.text(11.2, df_plot.iloc[-1, i], df_plot.columns[i], color='black')
 
+plt.show()
 ```
 
 ### Results
