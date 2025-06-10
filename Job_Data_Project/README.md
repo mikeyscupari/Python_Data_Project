@@ -104,7 +104,7 @@ plt.show()
 
 - SQL is in the largest amount of job postings for both Data Analysts and Data Engineers while being number 2 for Data Scientists.
 - Python is another highly sought after skill for all 3 roles, being number 1 for Data Scientists, number 2 for Data Engineers, and number 4 for Data Analysts.
-- While Data Analysts and Data Scientists share 4 of the same skills in their top 5, Data Engineers only share the aforementioned python and sql.
+- While Data Analysts and Data Scientists share 4 of the same skills in their top 5, Data Engineers only share the aforementioned python and sql. Data Engineers, instead, need more unique skills like aws, azure, and spark.
 
 ## 2. How are in-demand skills trending for Data Analysts?
 
@@ -140,9 +140,9 @@ plt.show()
 *Bar graph visualizing the trending top skills for data analysts in the US in 2023.*
 
 ### Insights:
-- SQL remains the most consistently demanded skill throughout the year, although it shows a gradual decrease in demand.
-- Excel experienced a significant increase in demand starting around September, surpassing both Python and Tableau by the end of the year.
-- Both Python and Tableau show relatively stable demand throughout the year with some fluctuations but remain essential skills for data analysts. Power BI, while less demanded compared to the others, shows a slight upward trend towards the year's end.
+- Consistent with the previous insights, SQL is the most in demand skill for every month, although it does slowly decline in prevalence over the year.
+- Excel was the second most requested skill throughout the year, but experienced a significant decrease and increase in the second half of the year.
+- Python and Tableau were similarly sought after for the duration of the year, switching positions a couple times.
 
 ## 3. How well do jobs and skills pay for Data Analysts?
 
