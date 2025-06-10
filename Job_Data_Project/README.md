@@ -220,27 +220,53 @@ Here's the breakdown of the highest-paid & most in-demand skills for data analys
 
 #### Insights:
 
-- The top graph shows specialized technical skills like `dplyr`, `Bitbucket`, and `Gitlab` are associated with higher salaries, some reaching up to $200K, suggesting that advanced technical proficiency can increase earning potential.
+- The top graph shows that more specialized skills like dplyr, bitbucket, and gitlab are correlated to higher salaries, almost reaching $200k.
 
-- The bottom graph highlights that foundational skills like `Excel`, `PowerPoint`, and `SQL` are the most in-demand, even though they may not offer the highest salaries. This demonstrates the importance of these core skills for employability in data analysis roles.
+- The bottom graph displays how the most common skills do not have as high of a median salary as the aforementioned more advanced skills. Despite this they are still highly important due to them being highly demanded and usualy being foundational to the higher paying skills.
 
-- There's a clear distinction between the skills that are highest paid and those that are most in-demand. Data analysts aiming to maximize their career potential should consider developing a diverse skill set that includes both high-paying specialized skills and widely demanded foundational skills.
+- There's a clear distinction between the skills that are highest paid and those that are most in-demand. Data analysts aiming to maximize their career potential should consider developing a diverse skill set that includes both high-paying specialized skills and widely demanded skills.
 
 ## 4. What are the most optimal skills to learn for Data Analysts?
 
-To identify the most optimal skills to learn ( the ones that are the highest paid and highest in demand) I calculated the percent of skill demand and the median salary of these skills. To easily identify which are the most optimal skills to learn. 
+To identify the most optimal skills to learn and master, the ones that are the both highest paid and highest in demand, I calculated the percent of skill demand and the median salary of these skills and compared them. To easily identify which are the most optimal skills to learn. Below is selected code and the resulting graph.
 
 View my notebook with detailed steps here: [5_Optimal_Skills](5_Optimal_Skills.ipynb).
 
 #### Visualize Data
 
 ```python
-from adjustText import adjust_text
-import matplotlib.pyplot as plt
+sns.scatterplot(
+    data=df_DA_skills_tech_high_demand,
+    x='skill_percent',
+    y='median_salary',
+    hue='technology'
+)
 
-plt.scatter(df_DA_skills_high_demand['skill_percent'], df_DA_skills_high_demand['median_salary'])
+sns.despine()
+sns.set_theme(style='ticks')
+
+# Prepare texts for adjustText
+texts = []
+for i, txt in enumerate(df_DA_skills_high_demand.index):
+    texts.append(plt.text(df_DA_skills_high_demand['skill_percent'].iloc[i], df_DA_skills_high_demand['median_salary'].iloc[i], txt))
+
+# Adjust text to avoid overlap
+adjust_text(texts, arrowprops=dict(arrowstyle='->', color='gray'))
+
+# Set axis labels, title, and legend
+plt.xlabel('Percent of Data Analyst Jobs')
+plt.ylabel('Median Yearly Salary')
+plt.title('Most Optimal Skills for Data Analysts in the US')
+plt.legend(title='Technology')
+
+from matplotlib.ticker import PercentFormatter
+ax = plt.gca()
+ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, pos: f'${int(y/1000)}K'))
+ax.xaxis.set_major_formatter(PercentFormatter(decimals=0))
+
+# Adjust layout and display plot 
+plt.tight_layout()
 plt.show()
-
 ```
 
 #### Results
